@@ -27,9 +27,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -78,18 +82,31 @@ public class App extends Application {
         mainGP.setVgap(10);
 
         Scene mainScene = new Scene(mainGP, 800, 800);
-
-        Label mainHeader = new Label("W I Z A R D ' S  T O W E R");
+        
+        Text mainHeader = new Text();
+        mainHeader.setText("W I Z A R D ' S    T O W E R");
+        mainHeader.setFont(new Font(20));
+        
+        //Menu image
+        Image wizard = new Image("/wizardStudying.jpg");
+        ImageView wizardImage = new ImageView(wizard);
+        wizardImage.setFitWidth(295);
+        wizardImage.setFitHeight(486);
+        
         
             //Box for menu buttons
         VBox menuButtons = new VBox(15);
         menuButtons.getChildren().add(bookMenu);
         menuButtons.getChildren().add(cardMenu);
         menuButtons.getChildren().add(checkInOut);
-        menuButtons.getChildren().add(exitButton);
+        
+        HBox imageBox = new HBox(15);
+        imageBox.getChildren().add(wizardImage);
 
         mainGP.add(mainHeader, 0, 0);
-        mainGP.add(menuButtons,0, 1);
+        mainGP.add(menuButtons,1, 1);
+        mainGP.add(imageBox, 0,1);
+        mainGP.add(exitButton, 0,2);
         
             //Exit button
         exitButton.setOnAction(event -> {
@@ -107,7 +124,10 @@ public class App extends Application {
         
         Scene bookScene = new Scene(bookGP, 800, 800);
         
-        Label bookHeader = new Label("B O O K  M A N A G E R");
+        Text bookHeader = new Text();
+        bookHeader.setText("B O O K  M A N A G E R");
+        bookHeader.setFont(new Font(20));
+        
         Label titleLabel = new Label("Title: ");
         titleLabel.setMinWidth(50);
         Label authorLabel = new Label("Author: ");
@@ -198,7 +218,10 @@ public class App extends Application {
         
         Scene cardScene = new Scene(cardGP, 800, 800);
         
-        Label cardHeader = new Label("C A R D  H O L D E R  M A N A G E R");
+        Text cardHeader = new Text();
+        cardHeader.setText("C A R D  H O L D E R  M A N A G E R");
+        cardHeader.setFont(new Font(20));
+        
         Label cardFirstLabel = new Label("First Name: ");
         cardFirstLabel.setMinWidth(50);
         Label cardLastLabel = new Label("Last Name: ");
@@ -261,7 +284,10 @@ public class App extends Application {
         
         Scene checkInOutScene = new Scene(checkInOutGP, 800, 800);
         
-        Label checkInOutHeader = new Label("M A N A G E  C H E C K  I N  /  O U T");
+        Text checkInOutHeader = new Text();
+        checkInOutHeader.setText("M A N A G E  C H E C K  I N  /  O U T");
+        checkInOutHeader.setFont(new Font(20));
+        
         
             //Books checked out list
         checkOutBooks.setPrefWidth(500);
